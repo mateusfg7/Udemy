@@ -1,6 +1,7 @@
+saida = open("genomas.html", "w")
+
 def genes(genes):
     entrada = open("{}.fasta".format(genes)).read()
-    saida = open("{}.html".format(genes), "w")
 
     cont = {}
 
@@ -16,6 +17,7 @@ def genes(genes):
     # HTML
 
     i = 1
+    saida.write("<h1>{}</h1>".format(genes))
     for k in cont:
         transparencia = str(cont[k]/max(cont.values()))
         saida.write("<div style='width:100px; height:100px; border:1px solid #111; float:left; background:rgba(0,0,0,{}); color:#fff'>{}</div>\n".format(transparencia, k))
@@ -25,9 +27,10 @@ def genes(genes):
         
         i += 1
 
-    saida.close()
+
 
 
 
 genes('bacteria')
 genes('human')
+saida.close()
